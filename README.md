@@ -1,5 +1,9 @@
 # TIMDR-lightcurve-fewshot
 
+## Interfejs dla obserwatora
+
+**Windows: `SETUP.cmd` przy pierwszej instalacji, potem `START.cmd`.** Lokalna aplikacja: http://127.0.0.1:8767. Import CSV/DAT, kontrola jakości, wykres czasu i fazy, harmoniczne TIMDR, diagnostyka okresu, porównanie z czterema gwiazdami OGLE i raport JSON. Dziewięć przykładów dostępnych jednym kliknięciem oraz jako CSV. Instrukcja: [INTERFEJS.md](INTERFEJS.md). Testy: `python -m unittest test_ui.py test_pipeline.py`.
+
 Eksperymentalny klasyfikator rzeczywistych krzywych blasku OGLE: RRab, RRc, cefeidy F i 1O. Celem jest sprawdzenie, czy struktura sygnału ogranicza liczbę potrzebnych etykiet. Wyniki pilotażu i ograniczenia zawiera `RESULTS.md` po zakończeniu obliczeń.
 
 **Rola [GIA-TIMDR](https://github.com/jbackk-lang/GIA-TIMDR):** rama budowy modelu — wybór zegara procesu, reprezentacja w fazie i sito oparte na powtarzalności składowych. Tutaj zegarem jest okres zmienności gwiazdy. Implementacja to nowa, eksperymentalna adaptacja gałęzi sygnałowej M/S: zgodność harmonicznych w czterech fragmentach obserwacji steruje filtrowaniem. Nie jest kopią sita pasm nośnych z łożysk; nie przypisuje TIMDR autorstwa analizy Fouriera, LDA ani lasu losowego. O korzyści adaptacji rozstrzyga porównanie z reprezentacją bez sita.

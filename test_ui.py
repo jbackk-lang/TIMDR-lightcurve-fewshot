@@ -66,6 +66,20 @@ class AnalysisTests(unittest.TestCase):
         self.assertTrue(np.all(s['harmonic_after']<=s['harmonic_amplitude']+1e-12))
         self.assertEqual(sum(s['counts']),len(a));self.assertTrue(0<=s['attenuated_energy_pct']<=100)
 
+class TutorialTests(unittest.TestCase):
+    def test_problem_examples_block_classification(self):
+        samples=json.loads((ROOT/'examples/ui_examples.json').read_text(encoding='utf-8'))
+        for key in ('few-points','phase-gaps','large-errors','unknown-period'):
+            sample=next(s for s in samples if s['key']==key)
+            r=analyze(dict(text=sample['text'],mapping=inspect_text(sample['text'])['suggest'],period=sample['period'],declared_band='I'))
+            self.assertIsNone(r['classification'],key)
+
+    def test_four_real_examples_can_be_analyzed(self):
+        samples=json.loads((ROOT/'examples/ui_examples.json').read_text(encoding='utf-8'))
+        for sample in samples[:4]:
+            r=analyze(dict(text=sample['text'],mapping=inspect_text(sample['text'])['suggest'],period=sample['period'],declared_band='I'))
+            self.assertIsNotNone(r['classification'],sample['key'])
+
 class APITests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
