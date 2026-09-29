@@ -58,3 +58,7 @@ Dodatkowe porównanie ASTROMER: zainstaluj `requirements-astromer.txt`, uruchom 
 - Punkt odniesienia dla uczenia ze wstępnym treningiem: [ASTROMER](https://arxiv.org/abs/2205.01677), [ASTROMER 2](https://arxiv.org/abs/2502.02717).
 
 To klasyfikacja gwiazd, nie model orbit satelitów. Nie modyfikuje TIMDR-orbital-tracker. Rozkład testowy jest sztucznie zrównoważony, okresy katalogowe znane, a przegląd i obszar nieba wspólne. Wyniku nie wolno przedstawiać jako dowodu skuteczności przy dowolnych nowych typach gwiazd lub przewagi nad wszystkimi sieciami neuronowymi.
+
+## Tani pilot ATLAS
+
+[Raport ATLAS](experiments/atlas_budget/RAPORT.md): 20 etykiet na klasę, 3 podziały, okresy wyznaczane z pomiarów. Macro-F1: TIMDR 84,82%, faza bez sita 85,78%, cechy klasyczne + las losowy 91,35%. Obecne sito nie dało przewagi. To eksploracyjny pilot na publicznym archiwum, nie bezpośrednia replikacja wyników ASTROMER 2. Kod, protokół i predykcje są w `experiments/atlas_budget/`.
