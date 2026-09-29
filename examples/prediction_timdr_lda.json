@@ -1,0 +1,14 @@
+{
+  "predicted_class": "RRab",
+  "period_days": 0.5651696,
+  "n_observations": 169,
+  "phase_coverage": 1.0,
+  "scores": {
+    "RRab": 0.9999997095750646,
+    "RRc": 2.734154516783385e-07,
+    "CEP-F": 1.3717989481406542e-08,
+    "CEP-1O": 3.291494445516073e-09
+  },
+  "caveat": "Uncalibrated closed-set scores, not probabilities of astrophysical truth. LMC OGLE I-band only; unknown classes are not detected.",
+  "model": "timdr_lda"
+}

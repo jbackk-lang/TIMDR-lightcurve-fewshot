@@ -1,0 +1,9 @@
+{
+  "id": "OGLE-LMC-RRLYR-25683",
+  "label": "RRab",
+  "y": 0,
+  "period": 0.5651696,
+  "split": "test",
+  "n_obs": 169,
+  "sha256": "5f711043724e5139b5a772a4bfb9f4b674204e4313ba812929b342e17b6ef252"
+}

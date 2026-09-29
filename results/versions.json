@@ -1,0 +1,7 @@
+{
+  "python": "3.12.10",
+  "numpy": "2.5.2",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "protocol_sha256": "fdc154a853d8168e6efd525cf40394d23d75da9abc09d02bfc5e0b0367f26fc1"
+}

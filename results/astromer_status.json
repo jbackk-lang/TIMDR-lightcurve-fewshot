@@ -1,0 +1,14 @@
+{
+  "status": "completed",
+  "summary": {
+    "4": 0.682918747774119,
+    "8": 0.7904984342407556,
+    "16": 0.856692483585036,
+    "32": 0.878587787512363,
+    "64": 0.8876383335225763,
+    "128": 0.8932141991831586,
+    "160": 0.8941808731562195
+  },
+  "weights_sha256": "76a204a37a0d47bfd722477f55231624c0c56cf9eea3369b5f22ff445d95158b",
+  "description": "Wykonano dodatkowe por\u00f3wnanie z zamro\u017conym ASTROMER 1 (MACHO, biblioteka 0.1.8), \u015bredni\u0105 embedding\u00f3w i LDA. Te same gwiazdy, etykiety, metadane i losowania. Brak dostrajania na OGLE. Mo\u017cliwe pokrywanie si\u0119 fizycznych gwiazd z korpusem MACHO nie zosta\u0142o wykluczone; to por\u00f3wnanie eksploracyjne, bez dowodu przewagi nad modelami foundation. Wyniki: {\"4\": 0.682918747774119, \"8\": 0.7904984342407556, \"16\": 0.856692483585036, \"32\": 0.878587787512363, \"64\": 0.8876383335225763, \"128\": 0.8932141991831586, \"160\": 0.8941808731562195}"
+}

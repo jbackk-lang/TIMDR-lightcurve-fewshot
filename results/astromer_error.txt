@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "C:\Users\jback\Documents\Codex\2026-09-29\filtracja-w-przestrzeni\outputs\TIMDR-lightcurve-fewshot\astromer_extension.py", line 71, in <module>
+    try:run()
+        ^^^^^
+  File "C:\Users\jback\Documents\Codex\2026-09-29\filtracja-w-przestrzeni\outputs\TIMDR-lightcurve-fewshot\astromer_extension.py", line 49, in run
+    raise ValueError(f'Invalid embedding shape or missing observations: {ident} {a.shape}')
+ValueError: Invalid embedding shape or missing observations: OGLE-LMC-RRLYR-00939 (800, 256)

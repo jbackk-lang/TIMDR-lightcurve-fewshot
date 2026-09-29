@@ -1,0 +1,11 @@
+# ASTROMER extension, fixed before inspecting its scores
+
+The main protocol and endpoints remain unchanged. Compare frozen pretrained MACHO ASTROMER v1 from Python package 0.1.8, mean pooling all valid token embeddings, plus the same 3 metadata values available to the main arms. Use LDA with shrinkage 0.2 and training-only scaling, identical support draws and test stars, all seven label budgets and 30 draws. No supervised or unsupervised fine-tuning on OGLE. The pretrained model has seen many external unlabeled light curves; its resources differ from the other arms.
+
+Use the official loader/preprocessing, deterministic inference with TensorFlow seed 120. Concatenation returns object IDs sorted lexicographically: explicitly map this back to manifest order. Cache each pooled embedding and checkpoint hash. Do not score unless all 2000 objects encode correctly with finite results.
+
+MACHO observed the Magellanic Clouds: physical-star overlap with OGLE may exist. We have not performed an identity/position audit of the pretraining corpus. Consequently this is an exploratory pretrained baseline, NOT a contamination-free test or proof of superiority over foundation models. This is ASTROMER 1, not ASTROMER 2. Failure to run is recorded separately, never assigned a score of zero.
+
+Runtime correction before ASTROMER evaluation: the package documentation's `macho.zip` URL returns 404. Use the official `macho_a0.zip` archive (paper checkpoint, website weight tag v0; config use_leak=false matches the package architecture). TensorFlow 2.21 needs `tf-keras` with TF_USE_LEGACY_KERAS=1, and tensorboard is an undeclared import dependency. No weights are retrained or adapted.
+
+Preprocessing audit before scoring: the official loader generates floor(N/200)+1 full 200-point windows for N>=200, clamping the last window to the last 200 observations. This repeats some ending observations (and a full last window when N is divisible by 200). Preserve official behavior for this baseline; mean pooling weights these duplicated tokens accordingly. For N<200, padding is masked and removed by encode. Validate against this actual window count, not the original observation count. This is not a one-embedding-per-original-observation average.

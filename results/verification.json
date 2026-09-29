@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "unique_stars": 2000,
+  "verified_prediction_files": 1605,
+  "model_roundtrip_checks": 2,
+  "unit_tests": 6,
+  "protocol_hash_matches": true
+}

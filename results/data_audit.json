@@ -1,0 +1,24 @@
+{
+  "protocol_sha256": "fdc154a853d8168e6efd525cf40394d23d75da9abc09d02bfc5e0b0367f26fc1",
+  "excluded": {
+    "missing_or_short": 135,
+    "phase_coverage": 1,
+    "near_duplicate_position": 1
+  },
+  "classes": [
+    "RRab",
+    "RRc",
+    "CEP-F",
+    "CEP-1O"
+  ],
+  "sources": [
+    "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/lmc/rrlyr/RRab.dat",
+    "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/lmc/rrlyr/RRc.dat",
+    "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/lmc/cep/cepF.dat",
+    "https://www.astrouw.edu.pl/ogle/ogle4/OCVS/lmc/cep/cep1O.dat"
+  ],
+  "archives": {
+    "rrlyr": "f79011463c1819720f10bef78ba96465d297bfb93569b67226e29c7f482d9e75",
+    "cep": "9e78d840e344e02462d12014bc07598bd10053ae184fa9b797adc05e77e31d96"
+  }
+}
