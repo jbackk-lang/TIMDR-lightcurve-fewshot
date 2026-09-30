@@ -6,3 +6,6 @@ models/*
 !models/classical_rf.joblib
 weights/
 *.tmp
+
+/images/inbox/*
+!/images/inbox/README.txt

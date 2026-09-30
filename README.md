@@ -2,7 +2,7 @@
 
 ## Interfejs dla obserwatora
 
-**Windows: `SETUP.cmd` przy pierwszej instalacji, potem `START.cmd`.** Lokalna aplikacja: http://127.0.0.1:8767. Import CSV/DAT, kontrola jakości, wykres czasu i fazy, harmoniczne TIMDR, diagnostyka okresu, porównanie z czterema gwiazdami OGLE i raport JSON. Dziewięć przykładów dostępnych jednym kliknięciem oraz jako CSV. Instrukcja: [INTERFEJS.md](INTERFEJS.md). Testy: `python -m unittest test_ui.py test_pipeline.py`.
+**Windows: `SETUP.cmd` przy pierwszej instalacji, potem `START.cmd`.** Lokalna aplikacja: http://127.0.0.1:8768. Import CSV/DAT, kontrola jakości, wykres czasu i fazy, harmoniczne TIMDR, diagnostyka okresu, porównanie z czterema gwiazdami OGLE i raport JSON. Dziewięć przykładów dostępnych jednym kliknięciem oraz jako CSV. Instrukcja: [INTERFEJS.md](INTERFEJS.md). Testy: `python -m unittest test_ui.py test_pipeline.py`.
 
 Eksperymentalny klasyfikator rzeczywistych krzywych blasku OGLE: RRab, RRc, cefeidy F i 1O. Celem jest sprawdzenie, czy struktura sygnału ogranicza liczbę potrzebnych etykiet. Wyniki pilotażu i ograniczenia zawiera `RESULTS.md` po zakończeniu obliczeń.
 
@@ -62,3 +62,7 @@ To klasyfikacja gwiazd, nie model orbit satelitów. Nie modyfikuje TIMDR-orbital
 ## Tani pilot ATLAS
 
 [Raport ATLAS](experiments/atlas_budget/RAPORT.md): 20 etykiet na klasę, 3 podziały, okresy wyznaczane z pomiarów. Macro-F1: TIMDR 84,82%, faza bez sita 85,78%, cechy klasyczne + las losowy 91,35%. Obecne sito nie dało przewagi. To eksploracyjny pilot na publicznym archiwum, nie bezpośrednia replikacja wyników ASTROMER 2. Kod, protokół i predykcje są w `experiments/atlas_budget/`.
+
+## Zdjęcia nieba — prototyp
+
+Uruchom `START.cmd` i wybierz **Zdjęcia nieba** lub otwórz `/images`. Wgranie zdjęcia pokazuje kandydatów na gwiazdy i lokalne diagnostyki; seria skalibrowanych i wyrównanych FITS pozwala wyznaczyć względną krzywą blasku oraz pobrać CSV. Przycisk **Wypróbuj symulowane niebo** uruchamia przykład 96 klatek. Szczegóły: [ZDJECIA_NIEBA.md](ZDJECIA_NIEBA.md). Testy: `python -m unittest test_sky_images.py test_ui.py test_pipeline.py`.

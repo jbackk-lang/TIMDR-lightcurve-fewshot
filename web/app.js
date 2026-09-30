@@ -89,3 +89,13 @@ let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);
 fetch('/api/references').then(r=>{if(!r.ok)throw Error('Nie można odczytać przykładów OGLE.');return r.json();}).then(r=>state.refs=r).catch(alertError);
 
 fetch('/api/examples').then(r=>{if(!r.ok)throw Error('Nie można odczytać przykładów edukacyjnych.');return r.json();}).then(r=>state.samples=r).catch(alertError);
+
+
+(async()=>{
+const saved=sessionStorage.getItem('timdr-image-curve');if(!saved)return;sessionStorage.removeItem('timdr-image-curve');
+try{const d=JSON.parse(saved);await loadFile(new File([d.text],'krzywa-ze-zdjec.csv',{type:'text/csv'}));if(!state.text)return;
+$('period').value=d.period??'';$('unknown').checked=!d.period;$('period').disabled=!d.period;$('search-box').hidden=!!d.period;state.basePeriod=d.period;
+$('declared-band').value=['I','V'].includes(d.band)?d.band:'unknown';$('experimental').checked=!!d.example;
+$('example-note').textContent=d.example?'Krzywa z SYMULOWANYCH zdjęć. Okres zadany: 0,56 dnia. Klasyfikacja jest demonstracją działania, nie identyfikacją prawdziwej gwiazdy. Dla stałej gwiazdy oczekuj komunikatu o słabym sygnale.':'Krzywa z Twoich zdjęć. Sprawdź pasmo i wyznacz okres przed klasyfikacją.';$('example-note').hidden=false;
+await run();}catch(e){alertError(e);}
+})();

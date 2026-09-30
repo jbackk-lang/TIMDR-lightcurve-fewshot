@@ -27,7 +27,7 @@ class Handler(BaseHTTPRequestHandler):
         return self.headers.get('Host') in (f'127.0.0.1:{self.server.server_port}',f'localhost:{self.server.server_port}')
     def do_GET(self):
         if not self.host_ok():self.send(403,{'error':'Niedozwolony adres hosta.'});return
-        routes={'/':('web/index.html','text/html; charset=utf-8'),'/app.js':('web/app.js','text/javascript; charset=utf-8'),
+        routes={'/images':('web/images.html','text/html; charset=utf-8'),'/images.js':('web/images.js','text/javascript; charset=utf-8'),'/':('web/index.html','text/html; charset=utf-8'),'/app.js':('web/app.js','text/javascript; charset=utf-8'),
                 '/style.css':('web/style.css','text/css; charset=utf-8'),'/api/references':('examples/ogle_references.json','application/json; charset=utf-8'),
                 '/api/examples':('examples/ui_examples.json','application/json; charset=utf-8')}
         path=urlsplit(self.path).path
@@ -35,7 +35,7 @@ class Handler(BaseHTTPRequestHandler):
         file,mime=routes[path]
         try:
             body=(ROOT/file).read_bytes()
-            if path=='/':body=body.replace(b'__TOKEN__',self.server.token.encode())
+            if path in ('/','/images'):body=body.replace(b'__TOKEN__',self.server.token.encode())
             self.send(200,body,mime)
         except OSError:self.send(500,{'error':'Brakuje pliku interfejsu lub przykładów OGLE.'})
     def do_POST(self):
@@ -45,12 +45,20 @@ class Handler(BaseHTTPRequestHandler):
             self.send(403,{'error':'Odśwież stronę otwartą lokalnie.'});return
         try:length=int(self.headers.get('Content-Length','0'))
         except ValueError:length=0
-        if length<=0 or length>6_000_000:self.send(413,{'error':'Plik jest zbyt duży (limit 5 MB).'});return
+        limit=33_000_000 if self.path.startswith('/api/images/') else 6_000_000
+        if length<=0 or length>limit:self.send(413,{'error':'Przekroczony limit danych: zdjęcia 24 MB, tekst 5 MB.'});return
         if not self.server.busy.acquire(blocking=False):self.send(429,{'error':'Trwa poprzednia analiza. Poczekaj na wynik.'});return
         try:
             payload=json.loads(self.rfile.read(length))
             if not isinstance(payload,dict):raise ValueError('Nieprawidłowe dane wejściowe.')
-            if self.path=='/api/inspect':
+            if self.path.startswith('/api/images/'):
+                from sky_images import inspect,series,demo,folder_series
+                if self.path=='/api/images/inspect':result=inspect(payload.get('file',{}))
+                elif self.path=='/api/images/series':result=series(payload)
+                elif self.path=='/api/images/demo':result=demo(payload.get('kind','variable'))
+                elif self.path=='/api/images/folder':result=folder_series(ROOT,payload.get('example'))
+                else:raise ValueError('Nieznane żądanie zdjęć.')
+            elif self.path=='/api/inspect':
                 result=inspect_text(payload.get('text',''));result.pop('rows',None)
             elif self.path=='/api/analyze':result=analyze(payload)
             elif self.path=='/api/period':
@@ -65,7 +73,7 @@ class Handler(BaseHTTPRequestHandler):
         finally:self.server.busy.release()
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--port',type=int,default=8767);p.add_argument('--no-browser',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--port',type=int,default=8768);p.add_argument('--no-browser',action='store_true');a=p.parse_args()
     server=Server(('127.0.0.1',a.port));url=f'http://127.0.0.1:{server.server_port}'
     print('TIMDR — pracownia krzywych blasku:',url,flush=True)
     print('Zatrzymaj: Ctrl+C. Pomiary nie opuszczają komputera.',flush=True)

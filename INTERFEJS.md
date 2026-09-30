@@ -2,7 +2,7 @@
 
 ## Uruchomienie
 
-Windows: uruchom `SETUP.cmd` jeden raz (Python 3.12 i internet), następnie `START.cmd`. Lokalna strona otworzy się pod adresem http://127.0.0.1:8767. Pozostaw terminal otwarty; Ctrl+C zatrzymuje serwer. Alternatywnie: `.venv/Scripts/python.exe ui_server.py`.
+Windows: uruchom `SETUP.cmd` jeden raz (Python 3.12 i internet), następnie `START.cmd`. Lokalna strona otworzy się pod adresem http://127.0.0.1:8768. Pozostaw terminal otwarty; Ctrl+C zatrzymuje serwer. Alternatywnie: `.venv/Scripts/python.exe ui_server.py`.
 
 Pomiary są analizowane w pamięci na Twoim komputerze. Wykresy nie korzystają z zewnętrznego serwisu. Raport zapisuje użytkownik przyciskiem pobrania.
 
