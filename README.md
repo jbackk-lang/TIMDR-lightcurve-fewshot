@@ -1,5 +1,9 @@
 # TIMDR-lightcurve-fewshot
 
+<!-- TIMDR HUB LINKS -->
+> **Ekosystem TIMDR:** [Knowledge Hub — dokumentacja i wyszukiwarka](https://jbackk-lang.github.io/TIMDR-AI-Knowledge-Base/) · [Panel badawczy](https://jbackk-lang.github.io/) · [GIA-TIMDR — źródła](https://github.com/jbackk-lang/GIA-TIMDR) · [Research AI — lokalne wyszukiwanie semantyczne](https://github.com/jbackk-lang/TIMDR-AI-Knowledge-Base). Publiczna wyszukiwarka Huba jest tekstowa; semantyczna wymaga lokalnego uruchomienia.
+<!-- /TIMDR HUB LINKS -->
+
 ## Interfejs dla obserwatora
 
 **Windows: `SETUP.cmd` przy pierwszej instalacji, potem `START.cmd`.** Lokalna aplikacja: http://127.0.0.1:8768. Import CSV/DAT, kontrola jakości, wykres czasu i fazy, harmoniczne TIMDR, diagnostyka okresu, porównanie z czterema gwiazdami OGLE i raport JSON. Dziewięć przykładów dostępnych jednym kliknięciem oraz jako CSV. Instrukcja: [INTERFEJS.md](INTERFEJS.md). Testy: `python -m unittest test_ui.py test_pipeline.py`.
